@@ -1,5 +1,6 @@
 ## typescript一个javascript的超集
 > ts编译成js： tsc xxx.ts
+> ts自动编译编译成js： tsc xxx.ts -w // 监听文件变化，自动编译
 ## 类型
 - 指定数据的类型的方法
 ```javascript
@@ -140,3 +141,40 @@ type myType = 1 | 2 | 3 | 4 | 5;
 let a: myType;
 let b: myType;
 ```
+## ts配置文件tsconfig.json
+> tsconfig.json:ts编译器的配置文件
+- tsconfig.json:ts编译器的配置文件
+  + include: 用来指定哪些文件需要被编译
+    + 路径： **表示任意目录
+      + *表示任意文件
+  + exclude: 表示不需要被编译的文件
+    + 默认值： ["node_modules","bower_components", "jspm_packages"]
+  + extends: 定义被继承的配置文件
+    + 例： "extends"："./configs/base"
+    + 上述例子中当前配置文件中会自动包含config目录下base.json中的所有的配置信息
+  + files: 指定被编译文件的列表，只有要编译的文件少时才用到
+    + 如：
+      + ```
+        "files": [
+          "index.ts",
+          "sys.ts",
+          "type.ts",
+          "utils.ts"
+        ]
+        ```
+  + compilerOptions // 编译器的配置选项
+    + target: "ES6" // 指定ts被编译后的es的版本
+    + module: "ES6" // 指定要使用的模块化的规范
+    + lib: ["DOM"] // 指定项目中要使用的库,一般不用改
+    + outDir: 用来指定编译后文件所在的目录
+    + outFile: "./dist/app.js" 将全局作用域中的代码合并为一个文件这个要设置的话module要设为system或amd
+    + allowJs: 是否对js文件进行编译,默认false
+    + checkJs: 是否检查js代码是否符合语法规范,默认false
+    + removeComments: 是否移除注释,默认false
+    + noEmit: 不生成编译后的文件,默认false
+    + noEmitOnError：当有错误时不生成编译后的文件,默认false
+    + alwaysStrict: 设置编译后的文件是否使用严格模式
+    + noImplicitAny: 不允许隐式的any类型
+    + noImplicitThis: 不允许不明确类型的this
+    + strictNullChecks: 严格检查空值+
+    + strict: 所有严格检查的开关
