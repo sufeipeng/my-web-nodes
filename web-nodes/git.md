@@ -29,3 +29,17 @@ $ git reflog // 查看历史版本信息包含回滚信息
 ```shell
 $ git reset --hard 版本 // 回退到某个版本
 ```
+
+### 把本地仓库信息提交到远程仓库
+```shell
+查看本地仓库和哪些远程仓库保持连接
+$ git remote -v
+让本地仓库与远程仓库新建一个连接origin（连接名）
+$ git remote add origin [git仓库地址]
+本地仓库与远程仓库断开连接
+$ git remote rm origin
+拉取远程仓库代码
+$ git pull origin master
+把本地代码提交到远程仓库
+$ git push origin master
+```
