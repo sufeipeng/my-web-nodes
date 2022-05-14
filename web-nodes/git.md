@@ -43,3 +43,5 @@ $ git pull origin master
 把本地代码提交到远程仓库
 $ git push origin master
 ```
+### 开发过程中不需要提交的文件可以在.gitignore中配置
+> 
